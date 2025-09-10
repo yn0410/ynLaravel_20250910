@@ -21,6 +21,7 @@
             {{-- <button class="btn btn-success">add</button> --}}
             {{-- <a href="http://localhost/students/create" class="btn btn-success">add</a> --}}
             <a href="{{ route('students.create') }}" class="btn btn-success">add</a>
+            <a href="{{ route('students.create') }}" class="btn btn-primary">excel</a>
         </div>
         <table class="table table-bordered">
             <thead>
@@ -31,31 +32,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>amy</td>
-                    <td>
-                        {{-- <a href="http://localhost/students/1/edit" class="btn btn-warning">edit</a> --}}
-                        <a href="{{ route('students.edit', ['student' => 1]) }}" class="btn btn-warning">edit</a>
-                        {{-- <button class="btn btn-danger">del</button> --}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>bob</td>
-                    <td>
-                        {{-- <button class="btn btn-warning">edit</button> --}}
-                        {{-- <button class="btn btn-danger">del</button> --}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>cat</td>
-                    <td>
-                        {{-- <button class="btn btn-warning">edit</button> --}}
-                        {{-- <button class="btn btn-danger">del</button> --}}
-                    </td>
-                </tr>
+                {{-- blade --}}
+                @foreach ($data as $value)
+                    <tr>
+                        <td>{{ $value['id'] }}</td>
+                        <td>{{ $value['name'] }}</td>
+                        <td>
+                            <a href="{{ route('students.edit', ['student' => $value['id']]) }}" class="btn btn-warning">edit</a>
+                        </td>
+                    </tr>
+                @endforeach
+
             </tbody>
         </table>
     </div>

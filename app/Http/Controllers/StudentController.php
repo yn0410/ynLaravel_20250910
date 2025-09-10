@@ -13,7 +13,22 @@ class StudentController extends Controller
     {
         // echo "student controller ok");
         // dd("hello student controller dd");
-        return view('student.index');
+        $data = [
+            [
+                'id'=>1,
+                'name'=>'amy'
+            ],
+            [
+                'id'=>2,
+                'name'=>'bob'
+            ],
+            [
+                'id'=>3,
+                'name'=>'cat'
+            ],
+        ];
+
+        return view('student.index', ['data'=>$data]);
 
     }
 
@@ -67,5 +82,32 @@ class StudentController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function excel()
+    {
+        dd("student excel ok");
+    }
+
+    public function test()
+    {
+        // dd("student test ok");
+        // $data = "student test ok";
+        $data = [
+            [
+                'id'=>1,
+                'name'=>'amy'
+            ],
+            [
+                'id'=>2,
+                'name'=>'bob'
+            ],
+            [
+                'id'=>3,
+                'name'=>'cat'
+            ],
+        ];
+
+        return view("student.test", ['data'=>$data]);
     }
 }

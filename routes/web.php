@@ -3,14 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 
+
+// students
+Route::get('/students_test', [StudentController::class, 'test']);
+Route::get('/students_excel', [StudentController::class, 'excel']);
+Route::resource('students', StudentController::class);
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
 
-Route::resource('students', StudentController::class);
-// Route::get('/student', function () {
-//     return view('student.index');
-// });
+
 
 

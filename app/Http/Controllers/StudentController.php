@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -13,20 +14,30 @@ class StudentController extends Controller
     {
         // echo "student controller ok");
         // dd("hello student controller dd");
-        $data = [
-            [
-                'id'=>1,
-                'name'=>'amy'
-            ],
-            [
-                'id'=>2,
-                'name'=>'bob'
-            ],
-            [
-                'id'=>3,
-                'name'=>'cat'
-            ],
-        ];
+        // $data = [
+        //     [
+        //         'id'=>1,
+        //         'name'=>'amy'
+        //     ],
+        //     [
+        //         'id'=>2,
+        //         'name'=>'bob'
+        //     ],
+        //     [
+        //         'id'=>3,
+        //         'name'=>'cat'
+        //     ],
+        // ];
+
+        // $data = DB::select('select * from students');
+        /* 老師筆記
+        get()  fetchAll 多筆 array foreach
+        first() fetch 單筆 
+        */
+        // $data = DB::table('students')->get();
+        $data = DB::table('students')->where('id', 1)->get();
+        dd($data);
+        // dd($data[0]);
 
         return view('student.index', ['data'=>$data]);
 
@@ -109,5 +120,30 @@ class StudentController extends Controller
         ];
 
         return view("student.test", ['data'=>$data]);
+    }
+
+    public function child(){
+        // dd("child ok");
+        return view("child");
+    }
+
+    public function html(){
+        // dd("html ok");
+        return view("page.html");
+    }
+
+    public function js(){
+        // dd("js ok");
+        return view("page.js");
+    }
+
+    public function php(){
+        // dd("php ok");
+        return view("page.php");
+    }
+
+    public function python(){
+        // dd("python ok");
+        return view("page.python");
     }
 }

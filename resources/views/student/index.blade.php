@@ -23,6 +23,11 @@
             <a href="{{ route('students.create') }}" class="btn btn-success">add</a>
             <a href="{{ route('students.create') }}" class="btn btn-primary">excel</a>
         </div>
+
+        @php
+            // dd($data);
+        @endphp
+
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -35,10 +40,10 @@
                 {{-- blade --}}
                 @foreach ($data as $value)
                     <tr>
-                        <td>{{ $value['id'] }}</td>
-                        <td>{{ $value['name'] }}</td>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->name }}</td>
                         <td>
-                            <a href="{{ route('students.edit', ['student' => $value['id']]) }}" class="btn btn-warning">edit</a>
+                            <a href="{{ route('students.edit', ['student' => $value->id]) }}" class="btn btn-warning">edit</a>
                         </td>
                     </tr>
                 @endforeach

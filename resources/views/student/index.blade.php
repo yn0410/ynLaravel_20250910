@@ -22,6 +22,8 @@
                 <tr>
                     <th>id</th>
                     <th>name</th>
+                    <th>phone</th>
+                    <th>hobbies</th>
                     <th>opt</th>
                 </tr>
             </thead>
@@ -30,9 +32,16 @@
                     <tr>
                         <td>{{$value->id}}</td>
                         <td>{{$value->name}}</td>
+                        <td>{{$value->phoneRelation->phone ?? ''}}</td>
+                        <td>{{$value->hobbyString ?? ''}}</td>
                         <td>
-                            <a class="btn btn-warning" href="{{route('students.edit', ['student' => $value->id])}}">edit</a>
-                            <a class="btn btn-danger">delete</a>
+                            <form action="{{route('students.destroy', ['student' => $value->id])}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <a class="btn btn-warning" href="{{route('students.edit', ['student' => $value->id])}}">edit</a>
+                                <button type="submit" class="btn btn-danger">delete</button>
+                            </form>
+                            {{-- <a class="btn btn-danger" href="{{route('students.destroy', ['student' => $value->id])}}">delete</a> --}}
                         </td>
                     </tr>
                 @endforeach
